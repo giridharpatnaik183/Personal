@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surprise Timer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+
+        #surpriseImage {
+            max-width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            margin: 50px auto;
+            display: none;
+        }
+
+        #message {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        #countdown {
+            font-size: 36px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="message">Please wait, you have a surprise</div>
+    <div id="countdown">5</div>
+    <img id="surpriseImage" src="Beat-You-Up.jpg" alt="Surprise Image">
+
+    <script>
+        // Function to show the surprise image and hide the countdown
+        function showSurprise() {
+            document.getElementById("countdown").style.display = "none";
+            document.getElementById("message").style.display = "none";
+            document.getElementById("surpriseImage").style.display = "block";
+        }
+
+        // Function to update the countdown every second
+        function updateCountdown() {
+            const countdownElement = document.getElementById("countdown");
+            let countdownValue = parseInt(countdownElement.textContent);
+            countdownValue--;
+
+            if (countdownValue >= 0) {
+                countdownElement.textContent = countdownValue;
+            } else {
+                showSurprise();
+            }
+        }
+
+        // Start the countdown timer
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
